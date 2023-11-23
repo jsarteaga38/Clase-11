@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QA
     QFormLayout, QDialog, QDialogButtonBox, QVBoxLayout
 
 from cliente import Cliente
+from ventana2 import Ventana2
 
 
 class Ventana1(QMainWindow):
@@ -50,7 +51,6 @@ class Ventana1(QMainWindow):
         self.ladoIzquierdo.addRow(self.letrero1)
 
         self.letrero2 = QLabel()
-        #self.letrero2.setFixedWidth(340)
         self.letrero2.setFixedHeight(120)
         self.letrero2.setText("<b>Por favor ingrese la información del cliente</b><br>"
                               "<b>en el formulario de abajo. Los campos marcados</b><br>"
@@ -215,22 +215,37 @@ class Ventana1(QMainWindow):
         self.botonBuscar.setStyleSheet("background-color: blue;"
                                        "color: white;"
                                        "padding: 10px;"
-                                       "margin-top: 40px;")
+                                       "margin-top: 10px;")
 
         self.botonBuscar.clicked.connect(self.accion_botonBuscar)
+        #self.ladoDerecho.addRow(self.botonBuscar)
 
         self.botonRecuperar = QPushButton("Recuperar")
         self.botonRecuperar.setFixedWidth(90)
         self.botonRecuperar.setStyleSheet("background-color: blue;"
                                           "color: white;"
                                           "padding: 10px;"
-                                          "margin-top: 40px;")
+                                          "margin-top: 10px;")
 
         self.botonRecuperar.clicked.connect(self.accion_botonRecuperar)
 
         self.ladoDerecho.addRow(self.botonBuscar, self.botonRecuperar)
 
+        self.botonContinuar = QPushButton("Continuar")
+        self.botonContinuar.setFixedWidth(90)
+        self.botonContinuar.setStyleSheet("background-color: blue;"
+                                          "color: white;"
+                                          "padding: 10px;"
+                                          "margin-top: 40px;")
+
+        self.botonContinuar.clicked.connect(self.accion_botonContinuar)
+
+        self.ladoDerecho.addRow(self.botonContinuar)
+
+
         self.horizontal.addLayout(self.ladoDerecho)
+
+
 
         # aqui inicia lado izquierdo
         self.fondo.setLayout(self.horizontal)
@@ -535,6 +550,13 @@ class Ventana1(QMainWindow):
                                      "\nVuelva a intentarlo.")
 
                 self.ventanaDialogo.exec_()
+
+
+    def accion_botonContinuar(self):
+        self.hide()
+        self.ventana2 = Ventana2(self)
+
+        self.ventana2.show()
 
 
 
