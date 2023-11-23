@@ -11,8 +11,10 @@ from cliente import Cliente
 
 
 class Ventana2(QMainWindow):
-    def __init__(self, parent=None):
-        super(Ventana2, self).__init__(parent)
+    def __init__(self, anterior):
+        super(Ventana2, self).__init__(anterior)
+
+        self.ventanaAnterior = anterior
 
         self.setWindowTitle("Usuarios registrados")
 
@@ -126,7 +128,7 @@ class Ventana2(QMainWindow):
                     self.botonAccion.setStyleSheet("background-color: blue;"
                                           "color: white;"
                                           "padding: 10px;"
-                                          "margin-top: 40px;")
+                                          "margin-top: 10px;")
 
                     self.verticalCuadricula.addWidget(self.botonAccion)
 
@@ -144,12 +146,33 @@ class Ventana2(QMainWindow):
 
         self.botones.idClicked.connect(self.metodo_accionBotones)
 
+        self.botonVolver = QPushButton("Volver")
+
+        self.botonVolver.setFixedWidth(90)
+
+        self.botonVolver.setStyleSheet("background-color: blue;"
+                                          "color: white;"
+                                          "padding: 10px;"
+                                          "margin-top: 10px;")
+
+        self.botonVolver.clicked.connect(self.metodo_botonVolver)
+
+        self.vertical.addWidget(self.botonVolver)
+
         self.fondo.setLayout(self.vertical)
 
 
     def metodo_accionBotones(self, cedulaUsuario):
 
         print(cedulaUsuario)
+
+
+    def metodo_botonVolver(self):
+
+        self.hide()
+
+        self.ventanaAnterior.show()
+
 
 
 
