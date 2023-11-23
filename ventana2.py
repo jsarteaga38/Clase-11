@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QA
     QFormLayout, QDialog, QDialogButtonBox, QVBoxLayout, QScrollArea, QWidget, QGridLayout, QButtonGroup
 
 from cliente import Cliente
+from ventana3 import Ventana3
 
 
 class Ventana2(QMainWindow):
@@ -146,6 +147,18 @@ class Ventana2(QMainWindow):
 
         self.botones.idClicked.connect(self.metodo_accionBotones)
 
+
+
+        self.botonFormaTabular = QPushButton("Forma tabular")
+        self.botonFormaTabular.setFixedWidth(100)
+        self.botonFormaTabular.setStyleSheet("background-color: blue;"
+                                          "color: white;"
+                                          "padding: 10px;"
+                                          "margin-top: 10px;")
+        self.botonFormaTabular.clicked.connect(self.metodo_botonFormaTabular)
+
+        self.vertical.addWidget(self.botonFormaTabular)
+        
         self.botonVolver = QPushButton("Volver")
 
         self.botonVolver.setFixedWidth(90)
@@ -173,6 +186,12 @@ class Ventana2(QMainWindow):
 
         self.ventanaAnterior.show()
 
+
+    def metodo_botonFormaTabular(self):
+
+        self.hide()
+        self.ventana3 = Ventana3(self)
+        self.ventana3.show()
 
 
 
