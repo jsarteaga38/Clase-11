@@ -148,6 +148,7 @@ class Ventana2(QMainWindow):
         self.botones.idClicked.connect(self.metodo_accionBotones)
 
 
+
         self.botonFormaTabular = QPushButton("Forma tabular")
         self.botonFormaTabular.setFixedWidth(100)
         self.botonFormaTabular.setStyleSheet("background-color: blue;"
@@ -157,7 +158,7 @@ class Ventana2(QMainWindow):
         self.botonFormaTabular.clicked.connect(self.metodo_botonFormaTabular)
 
         self.vertical.addWidget(self.botonFormaTabular)
-
+        
         self.botonVolver = QPushButton("Volver")
 
         self.botonVolver.setFixedWidth(90)
@@ -185,12 +186,12 @@ class Ventana2(QMainWindow):
 
         self.ventanaAnterior.show()
 
+
     def metodo_botonFormaTabular(self):
 
         self.hide()
         self.ventana3 = Ventana3(self)
         self.ventana3.show()
-
 
 
 
